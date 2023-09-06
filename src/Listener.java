@@ -19,7 +19,7 @@ public class Listener extends ListenerAdapter {
 	@Override
 	public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
 
-		if (event.getChannel().getId().equalsIgnoreCase("1093631266546532393")) {
+		if (event.getChannel().getId().equalsIgnoreCase("1136044072642019439")) {
 			switch (event.getName()) {
 			case "lfg":
 				event.deferReply().setEphemeral(true).queue();
@@ -41,7 +41,7 @@ public class Listener extends ListenerAdapter {
 					event.getHook().deleteOriginal().queue();
 				} catch (NumberFormatException e) {
 					String temp = event.getOption("anzahl").getAsString();
-					event.getHook().sendMessage("Die Zahl: " + temp + " ist zu groß").queue();
+					event.getHook().sendMessage("Die Zahl: " + temp + " ist zu groÃŸ").queue();
 				}
 				break;
 			case "deleteall":
@@ -49,14 +49,14 @@ public class Listener extends ListenerAdapter {
 				System.out.println(event.getCommandString());
 				if (event.getUser().getId().equalsIgnoreCase("330819312631676931")
 						|| event.getUser().getId().equalsIgnoreCase("271566632625635328")) {
-					if (event.getChannel().getName().equalsIgnoreCase("bot-test")) {
+					if (event.getChannel().getId().equalsIgnoreCase("1136044072642019439")) {
 						deleteAll(event);
 						event.getHook().deleteOriginal().queue();
 					} else {
-						event.getHook().editOriginal("Ist in diesem Kanal nicht möglich!").queue();
+						event.getHook().editOriginal("Ist in diesem Kanal nicht mÃ¶glich!").queue();
 					}
 				} else {
-					event.getHook().editOriginal("Du hast nicht die nötige Berechtigung diesen Befehl auszuführen!")
+					event.getHook().editOriginal("Du hast nicht die nÃ¶tige Berechtigung diesen Befehl auszufÃ¼hren!")
 							.queue();
 				}
 
@@ -88,7 +88,7 @@ public class Listener extends ListenerAdapter {
 	}
 
 	public void onMessageReactionAdd(MessageReactionAddEvent event) {
-		if (event.getChannel().getId().equalsIgnoreCase("1093631266546532393")) {
+		if (event.getChannel().getId().equalsIgnoreCase("1136044072642019439")) {
 			try {
 				if (!event.isFromThread() && !event.getUser().isBot()) {
 					if (event.getEmoji().asUnicode().getAsCodepoints().equalsIgnoreCase("U+2705")) {
@@ -101,8 +101,7 @@ public class Listener extends ListenerAdapter {
 
 							String newMessage = anmeldung(m.getContentRaw(),
 									event.getGuild().getMemberById(event.getUser().getId()).getEffectiveName());
-							System.out.println(
-									event.getGuild().getMemberById(event.getUser().getId()).getEffectiveName());
+							// System.out.println(event.getGuild().getMemberById(event.getUser().getId()).getEffectiveName());
 
 							m.editMessage(newMessage).complete();
 						}
@@ -133,7 +132,7 @@ public class Listener extends ListenerAdapter {
 			String[] split = front.split(", ");
 			String[] output = new String[split.length - 1];
 			int j = 0;
-			for (int i = 0; i < output.length; i++) {
+			for (int i = 0; i < split.length; i++) {
 				if (!split[i].equalsIgnoreCase(author)) {
 					output[j] = split[i];
 					j++;
@@ -204,7 +203,7 @@ public class Listener extends ListenerAdapter {
 	}
 
 	public void onMessageReactionRemove(MessageReactionRemoveEvent event) {
-		if (event.getChannel().getId().equalsIgnoreCase("1093631266546532393")) {
+		if (event.getChannel().getId().equalsIgnoreCase("1136044072642019439")) {
 			try {
 				if (event.getEmoji().asUnicode().getAsCodepoints().equalsIgnoreCase("U+2705")) {
 					User u = event.retrieveUser().complete();
@@ -217,9 +216,6 @@ public class Listener extends ListenerAdapter {
 
 							String newMessage = abmeldung(m.getContentRaw(), event.getGuild()
 									.getMemberById(event.retrieveUser().complete().getId()).getEffectiveName());
-
-							System.out.println(event.getGuild().getMemberById(event.retrieveUser().complete().getId())
-									.getNickname());
 
 							m.editMessage(newMessage).complete();
 
@@ -288,7 +284,7 @@ public class Listener extends ListenerAdapter {
 		}
 		int anzahl = Math.abs(Integer.parseInt(split[4]));
 		if (anzahl == 0) {
-			output += "**Fireteam:** " + author + "\n**Mitspieler:** ";
+			output += "**Fireteam:** " + author + "\n**Mitspieler:** .";
 		} else {
 			output += "**Fireteam:** " + author + " | +" + anzahl + "\n**Mitspieler:** .";
 		}
@@ -306,8 +302,8 @@ public class Listener extends ListenerAdapter {
 			String split = in.split("name: ")[1];
 			out = split.split("wann: ")[0];
 		}
-		
-		if(out.length() > 100) {
+
+		if (out.length() > 100) {
 			out = out.substring(0, 100);
 		}
 		return out;
@@ -319,7 +315,7 @@ public class Listener extends ListenerAdapter {
 				.getRetrievedHistory();
 		try {
 			for (int i = event.getOption("before").getAsInt(); i < history.size(); i++) {
-				if (!history.get(i).getId().equalsIgnoreCase("1093637535219064832")) {
+				if (!history.get(i).getId().equalsIgnoreCase("1136044822889775165")) {
 					if (history.get(i).getStartedThread() != null) {
 						history.get(i).getStartedThread().delete().complete();
 					}
@@ -328,7 +324,7 @@ public class Listener extends ListenerAdapter {
 			}
 		} catch (NullPointerException e) {
 			for (int i = 0; i < history.size(); i++) {
-				if (!history.get(i).getId().equalsIgnoreCase("1093637535219064832")) {
+				if (!history.get(i).getId().equalsIgnoreCase("1136044822889775165")) {
 					if (history.get(i).getStartedThread() != null) {
 						history.get(i).getStartedThread().delete().complete();
 					}
@@ -342,7 +338,7 @@ public class Listener extends ListenerAdapter {
 	}
 
 	public void onMessageDelete(MessageDeleteEvent event) {
-		if (event.getChannel().getId().equalsIgnoreCase("1093631266546532393")) {
+		if (event.getChannel().getId().equalsIgnoreCase("1136044072642019439")) {
 			if (!event.isFromThread()) {
 				List<ThreadChannel> tca = event.getGuildChannel().asThreadContainer().getThreadChannels();
 				for (int i = 0; i < tca.size(); i++) {
