@@ -247,7 +247,7 @@ public class Listener extends ListenerAdapter {
 		}
 		boolean first = true;
 		for (int i = 0; i < arrcontent.length; i++) {
-			if (i == max) {
+			if (i == max && max != 0) {
 				output += "\n**Weitere Mitspieler:** ";
 				first = true;
 			}
@@ -315,7 +315,7 @@ public class Listener extends ListenerAdapter {
 				.getRetrievedHistory();
 		try {
 			for (int i = event.getOption("before").getAsInt(); i < history.size(); i++) {
-				if (!history.get(i).getId().equalsIgnoreCase("1136044822889775165")) {
+				if (!history.get(i).getId().equalsIgnoreCase("1149007456375156746")) {
 					if (history.get(i).getStartedThread() != null) {
 						history.get(i).getStartedThread().delete().complete();
 					}
@@ -324,7 +324,7 @@ public class Listener extends ListenerAdapter {
 			}
 		} catch (NullPointerException e) {
 			for (int i = 0; i < history.size(); i++) {
-				if (!history.get(i).getId().equalsIgnoreCase("1136044822889775165")) {
+				if (!history.get(i).getId().equalsIgnoreCase("1149007456375156746")) {
 					if (history.get(i).getStartedThread() != null) {
 						history.get(i).getStartedThread().delete().complete();
 					}
