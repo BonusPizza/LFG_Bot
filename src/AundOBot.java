@@ -16,7 +16,7 @@ public class AundOBot {
 	JDA bot;
 
 	public AundOBot() throws LoginException {
-		String token = "MTA5MzYzNDkwOTExNTAwNzA1Nw.GbKpFj.8NXJPG_arceIXhs8jE86oOH7cS-1bNxRA_ddKA";
+		String token = "insertTokenHere";
 		bot = (JDA) JDABuilder.createDefault(token).enableIntents(EnumSet.allOf(GatewayIntent.class))
 				.addEventListeners(new Listener()).setActivity(Activity.playing("Type /lfg"))
 				.setMemberCachePolicy(MemberCachePolicy.ALL).build();
@@ -32,7 +32,7 @@ public class AundOBot {
 				.addCommands(
 						Commands.slash("lfg", "Looking for Guardians")
 								.addOptions(new OptionData(OptionType.STRING, "rolle",
-										"Wähle eine Rolle die du Pingen willst.", true)
+										"WÃ¤hle eine Rolle die du Pingen willst.", true)
 												.addChoice("PvE", "<@&989515734419923005>")
 												.addChoice("Raids-Dungeons", "<@&989516287833153566>")
 												.addChoice("Nightfall", "<@&989516481723236403>")
@@ -46,8 +46,8 @@ public class AundOBot {
 								.addOption(OptionType.STRING, "name", "Was willst du spielen?", true)
 								.addOption(OptionType.STRING, "wann", "Wann willst du starten?", false)
 								.addOption(OptionType.STRING, "threadname", "Soll der Thread einen besonderen Namen bekommen?", false),
-						Commands.slash("deleteall", "Lösche alle Nachrichten").addOption(OptionType.INTEGER, "before",
-								"gib die Anzahl der letzten x Nachrichten die nicht gelöscht werden sollen", false))
+						Commands.slash("deleteall", "LÃ¶sche alle Nachrichten").addOption(OptionType.INTEGER, "before",
+								"gib die Anzahl der letzten x Nachrichten die nicht gelÃ¶scht werden sollen", false))
 				.queue();
 	}
 
