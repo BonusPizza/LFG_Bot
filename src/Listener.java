@@ -35,6 +35,7 @@ public class Listener extends ListenerAdapter {
 					event.getChannel().getHistory().retrievePast(1).queue(messages -> {
 						if (messages.size() > 0) {
 							messages.get(0).createThreadChannel(threadNameGenerator(event.getCommandString())).queue();
+							messages.get(0).getStartedThread().addThreadMember(event.getUser()).queue();
 							messages.get(0).addReaction(Emoji.fromUnicode("U+2705")).queue();
 						}
 					});
