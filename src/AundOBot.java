@@ -16,7 +16,7 @@ public class AundOBot {
 	JDA bot;
 
 	public AundOBot() throws LoginException {
-		String token = "insertTokenHere";
+		String token = ""; // You need to Inset your own Bot Token here
 		bot = (JDA) JDABuilder.createDefault(token).enableIntents(EnumSet.allOf(GatewayIntent.class))
 				.addEventListeners(new Listener()).setActivity(Activity.playing("Type /lfg"))
 				.setMemberCachePolicy(MemberCachePolicy.ALL).build();
@@ -33,7 +33,7 @@ public class AundOBot {
 						Commands.slash("lfg", "Looking for Guardians")
 								.addOptions(new OptionData(OptionType.STRING, "rolle",
 										"Wähle eine Rolle die du Pingen willst.", true)
-												.addChoice("PvE", "<@&989515734419923005>")
+												.addChoice("PvE", "<@&989515734419923005>") // You need to Inset your own Role-IDs here
 												.addChoice("Raids-Dungeons", "<@&989516287833153566>")
 												.addChoice("Nightfall", "<@&989516481723236403>")
 												.addChoice("PvP", "<@&989516173584527410>")
